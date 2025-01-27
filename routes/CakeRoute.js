@@ -12,7 +12,7 @@ const CakeRoute = express.Router();
 // Multer configuration for image upload
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const uploadPath = "upload";
+        const uploadPath = "/upload";
         cb(null, uploadPath); // Folder to store images
     }, 
     
