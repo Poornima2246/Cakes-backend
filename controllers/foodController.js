@@ -11,7 +11,8 @@ const addFood = async (req, res) => {
         console.log("Uploaded files:", req.files);
 
         // Extract image filenames
-        const mainImage = req.files.mainImage ? req.files.mainImage[0].filename : null;
+       const  mainImage =  req.files.mainImage ? `/upload/${req.files.mainImage[0].filename}`: null,
+        // const mainImage = req.files.mainImage ? req.files.mainImage[0].filename : null;
         const addImage1 = req.files.addImage1 ? req.files.addImage1[0].filename : null;
         const addImage2 = req.files.addImage2 ? req.files.addImage2[0].filename : null;
 
