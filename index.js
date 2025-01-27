@@ -103,7 +103,8 @@ app.use(cors({ origin: '*' })); // Enable CORS for all origins
 connectDB();
 
 // ===== API Routes =====
-app.use("/api/dessert", CakeRoute); // Dessert-related API routes
+app.use("/api/dessert", CakeRoute); 
+// Dessert-related API routes
 
 // ===== Serve React Frontend =====
 const __dirname = path.resolve(); // Resolve the current directory
@@ -113,6 +114,7 @@ app.use(express.static(frontendBuildPath)); // Serve static files from the React
 
 // Catch-all route to serve the React app
 app.get("*", (req, res) => {
+    res.send("hello connected")
     res.sendFile(path.join(frontendBuildPath, "index.html"));
 });
 
