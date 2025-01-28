@@ -8,7 +8,7 @@ dotenv.config(); // Load environment variables from .env file
 
 export const connectDB = async () => {
   try {
-    const url = process.env.MONGODB_URI; // Fetch from environment variables
+    const url = process.env.MONGODB_URI || 4000 ;// Fetch from environment variables
     if (!url) {
       throw new Error("MONGODB_URI is not defined in the environment variables");
     }
