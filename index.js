@@ -95,7 +95,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 // ===== Middleware =====
-app.use('/upload', express.static('upload')); // Serve uploaded images
+app.use('/upload', express.static('./upload')); // Serve uploaded images
 app.use(express.json()); // Parse JSON requests
 app.use(cors({ origin: '*' })); // Enable CORS for all origins
 
