@@ -25,7 +25,7 @@ const CakeRoute = express.Router();
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const uploadPath = "./upload";
+        const uploadPath = "/upload";
         if (!fs.existsSync(uploadPath)) {
             fs.mkdirSync(uploadPath, { recursive: true });
         }
