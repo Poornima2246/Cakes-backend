@@ -5,21 +5,37 @@
 
 import express from "express";
 import multer from "multer";
+import fs from "fs";
+
 import { addFood, listFood, getFood, removeFood } from "../controllers/foodController.js";
 
 const CakeRoute = express.Router();
 
 // Multer configuration for image upload
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         const uploadPath = "./upload";
+//         cb(null, uploadPath); // Folder to store images
+//     }, 
+    
+//     filename: (req, file, cb) => {
+//         cb(null, `${Date.now()}_${file.originalname}`);
+//     },
+// });
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const uploadPath = "./upload";
-        cb(null, uploadPath); // Folder to store images
-    }, 
-    
+        if (!fs.existsSync(uploadPath)) {
+            fs.mkdirSync(uploadPath, { recursive: true });
+        }
+        cb(null, uploadPath);
+    },
     filename: (req, file, cb) => {
         cb(null, `${Date.now()}_${file.originalname}`);
     },
 });
+
 
 const maxSize = 5 * 1024 * 1024; // 5MB file size limit
 const upload = multer({
